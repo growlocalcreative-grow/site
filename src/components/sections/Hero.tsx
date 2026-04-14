@@ -26,7 +26,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mx-auto max-w-4xl font-heading text-5xl md:text-7xl font-medium leading-[1.1] tracking-tight text-foreground mb-6"
         >
-          Your Neighborhood <span className="italic text-primary">Button Pusher</span> in the Foothills
+          Custom Apps & <span className="italic text-primary">Modern Tools</span> for Local Makers
         </motion.h1>
 
         <motion.p
@@ -35,7 +35,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mx-auto max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed mb-10"
         >
-          Serving small businesses, nonprofits, churches, and makers across the Georgetown Divide and El Dorado & Placer Counties, pushing the right buttons so life stays simpler, calmer, and more focused on what you actually love.
+          Serving small businesses, nonprofits, and makers across the Georgetown Divide. I build high-end, phone-friendly tools that simplify your workflow so you can focus on what you actually love.
         </motion.p>
 
         <motion.div

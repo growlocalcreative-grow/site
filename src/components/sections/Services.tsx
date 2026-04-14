@@ -24,15 +24,16 @@ export function Services() {
       icon: <Terminal className="h-6 w-6" />,
     },
     {
-      title: "Simple Web & Mobile Tools",
-      description: "Got a recurring headache in your business? I build calm, phone-friendly tools that fix exactly that.",
+      title: "Custom Business Apps",
+      description: "Got a recurring headache in your business? I build calm, phone-friendly tools (PWAs) that fix exactly that. From inventory to client portals.",
       icon: <Smartphone className="h-6 w-6" />,
-      badge: "NEW",
+      badge: "POPULAR",
     },
     {
-      title: "Branding for Local Folks",
-      description: "Logo, colors, fonts, the whole vibe. Let's get your look consistent so people remember you.",
+      title: "White-Label Solutions",
+      description: "I build the tech, you own the brand. Perfect for makers who want to offer their own specialized tools to their community.",
       icon: <Palette className="h-6 w-6" />,
+      badge: "AGENCY",
     },
   ];
 
