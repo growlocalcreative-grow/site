@@ -1,0 +1,55 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: contactMessages
+    // Fields: name (string), email (string), subject (string), message (string), createdAt (timestamp)
+    //
+    // Collection: betaSignups
+    // Fields: appSlug (string), appTitle (string), name (string), email (string), reason (string), createdAt (timestamp)
+    //
+    // Collection: trialSignups
+    // Fields: appSlug (string), appTitle (string), name (string), email (string), businessName (string), createdAt (timestamp)
+    //
+    // ===============================================================
+
+    // Helper Functions
+    function isValidEmail(email) {
+      return email is string && email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function isValidString(val, maxLen) {
+      return val is string && val.size() > 0 && val.size() <= maxLen;
+    }
+
+    // Rules
+    match /contactMessages/{id} {
+      allow create: if isValidString(request.resource.data.name, 100) &&
+                      isValidEmail(request.resource.data.email) &&
+                      isValidString(request.resource.data.subject, 200) &&
+                      isValidString(request.resource.data.message, 5000) &&
+                      request.resource.data.createdAt is timestamp;
+      allow read, update, delete: if false; // Only admin can read (via console)
+    }
+
+    match /betaSignups/{id} {
+      allow create: if isValidString(request.resource.data.appSlug, 100) &&
+                      isValidString(request.resource.data.appTitle, 100) &&
+                      isValidString(request.resource.data.name, 100) &&
+                      isValidEmail(request.resource.data.email) &&
+                      request.resource.data.createdAt is timestamp;
+      allow read, update, delete: if false;
+    }
+
+    match /trialSignups/{id} {
+      allow create: if isValidString(request.resource.data.appSlug, 100) &&
+                      isValidString(request.resource.data.appTitle, 100) &&
+                      isValidString(request.resource.data.name, 100) &&
+                      isValidEmail(request.resource.data.email) &&
+                      request.resource.data.createdAt is timestamp;
+      allow read, update, delete: if false;
+    }
+  }
+}
